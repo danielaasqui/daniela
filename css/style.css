@@ -1,0 +1,14 @@
+.carousel-caption{
+    bottom: auto !important;
+   
+}
+#imagen_tienda_ropa_1{
+    object-fit: cover !important;
+    width:100%;
+    height:100%;
+}
+#imagen_tienda_ropa_2{
+    object-fit: cover  !important;
+    width:100%;
+    height:100%;
+}
