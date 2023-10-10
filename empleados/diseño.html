@@ -1,0 +1,136 @@
+<html>
+<head>
+<style>
+	body {
+            font-family: Arial, sans-serif;
+            background-color: #338DFF;
+            margin: 0;
+            padding: 0;
+        }
+
+        center {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            height: 100vh;
+        }
+
+        form {
+            background-color: #F0EFEF;
+            border: 1px solid #ccc;
+            padding: 20px;
+            max-width: 400px;
+            box-shadow: 0 0 10px rgba(0, 0, 0, 0.2);
+            border-radius: 10px;
+        }
+
+        table {
+            width: 100%;
+            border-collapse: collapse;
+        }
+
+        table, th, td {
+            border: 1px solid #ccc;
+        }
+
+        th, td {
+            padding: 10px;
+            text-align: center;
+        }
+
+        input[type="text"] {
+            width: 100%;
+            padding: 10px;
+            margin: 5px 0;
+            border: 1px solid #ccc;
+            border-radius: 5px;
+        }
+
+        input[type="button"],
+        input[type="submit"] {
+            background-color: #338DFF;
+            border: none;
+            color: white;
+            font-weight: bold;
+            padding: 10px 20px;
+            text-align: center;
+            font-size: 16px;
+            margin: 5px;
+            cursor: pointer;
+            border-radius: 5px;
+        }
+
+        input[type="button"]:hover,
+        input[type="submit"]:hover {
+            background-color: #1E72E6;
+        }
+
+        label {
+            font-weight: bold;
+        }
+
+        h1 {
+            text-align: center;
+        }
+</style>
+</head>
+
+<body>
+<center>
+<form name="Mantenimiento" action="mantenimiento.php" method="post">
+<table border="1">
+
+<tr>
+<td colspan="4"><label>Mantenimiento de empleados</label></td>
+</tr>
+
+<tr><td colspan="4"><label>Registrar empleados </label></td></tr>
+<tr>
+	<td><label>nombre</label></td><td><input type="text" value="" maxlength="15" name="nombres"></td>
+    <td><label>apellido</label></td><td><input type="text" value="" maxlength="15" name="apellido"></td>
+	
+</tr>
+<tr>
+	<td><label>salario</label></td><td><input type="text" value="" maxlength="2" name="salario" maxlength="2" size="10"></td>
+	<td><label>puesto</label></td><td><input type="text" value="" maxlength="10" size="10" name="puesto"></td>
+</tr>
+
+<tr><td colspan="4" align="center">
+<input type="submit" value="Nuevo" name="limpiardatos" >
+<input type="submit" value="Grabar" name="grabardatos" >
+<input type="submit" value="Modificar" name="modificardatos" >
+<input type="submit" value="Eliminar" name="eliminardatos">
+</td>
+</tr>
+
+<tr><td colspan="4"><label>Listado de empleados </label></td></tr>
+
+<tr><td><label>nombre</label></td>
+	<td><label>apellido</label></td>
+	<td><label>salario</label></td>
+	<td><label>puesto</label></td>
+</tr>
+
+<?php 
+$sql="SELECT * FROM empleados";
+$result=mysqli_query($conn,$sql);
+
+while($mostrar=mysqli_fetch_array($result))
+{
+?>
+<tr> <td><?php echo $mostrar['nombre'] ?>
+	<td><?php echo $mostrar['apellido'] ?>
+	<td><?php echo $mostrar['salario'] ?>
+	<td><?php echo $mostrar['puesto'] ?>
+
+</tr>
+<?php
+}
+
+?>
+
+</table>
+</form>
+</center>
+</body>
+</html>
